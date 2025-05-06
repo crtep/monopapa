@@ -6,6 +6,6 @@ in
     lib-local/sources.mpl.mlb
     token.sig
     monoid.sig
-    stackTransition.fun
-    parenTrans.sml
+    mapTransition.sml
+    rule110.sml
 end

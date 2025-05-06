@@ -1,7 +1,7 @@
 functor MakeStackTransition
           (structure Tok  : TOKEN
-           structure Interior : MONOID)
-        : MONOID =
+           structure Interior : PARSERMONOID)
+        : PARSERMONOID =
 struct
   datatype t =
       Error

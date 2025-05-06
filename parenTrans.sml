@@ -21,13 +21,12 @@ struct
     | toString ("[", Left) = "["
     | toString ("[", Right) = "]"
     | toString _ = "?"
-
 end
 
 structure ParenTrans =
   MakeStackTransition
      (structure Tok = StringTok
-      structure Interior = Nil)
+      structure Interior = NilParser)
 
 
 fun parseString str =
@@ -38,22 +37,5 @@ fun parseString str =
   end
 
 
-
-val () = print "enter brackets: "
-
-val raw = 
-  case TextIO.inputLine TextIO.stdIn of
-    NONE => raise Fail "no input"
-  | SOME raw => raw
-
-
-val input     = String.substring (raw, 0, String.size raw - 1)
-
-val res = parseString input
-
-val _ = print (ParenTrans.toString res)
-val _ = print "\n"
-
-val _ = print (if ParenTrans.validate res
-               then "✓ balanced\n"
-               else "✗ mismatch\n")
+structure ParserMain = Main(structure M = ParenTrans)
+val _ = ParserMain.main ()
