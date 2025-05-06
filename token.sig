@@ -1,8 +1,9 @@
 signature TOKEN =
 sig
   type t
+  val eq : t * t -> bool          
+  
   datatype side = Left | Right
-  val eq : t * t -> bool           (* equality on the token type *)
-  (* val ofString : char -> t * side *)
-  (* val toString : t * side -> string *)
+  val ofString : string -> (t * side) option
+  val toString : t * side -> string
 end

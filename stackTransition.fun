@@ -11,19 +11,22 @@ struct
   fun openTag  s = Tr (Seq.empty (),     Seq.singleton s)
   fun closeTag s = Tr (Seq.singleton s,  Seq.empty   ())
 
-  fun ofChar #"(" = openTag "("
-    | ofChar #")" = closeTag "("
-    | ofChar #"{" = openTag "{"
-    | ofChar #"}" = closeTag "{"
-    | ofChar #"[" = openTag "["
-    | ofChar #"]" = closeTag "["
-    | ofChar _    = id
-  
+  fun ofTok (SOME (s, Tok.Left))  = openTag s
+    | ofTok (SOME (s, Tok.Right)) = closeTag s
+    | ofTok (NONE)                = id
+
+  fun ofChar c =
+    let 
+      val tok = Tok.ofString (Char.toString c)
+    in
+      ofTok tok
+    end
+
   fun toString (Error) = "Error"
     | toString (Tr (opens, closes)) =
         let
-          val openStr  = Seq.foldr (fn (x, y) => x ^ y) "" opens
-          val closeStr = Seq.foldr (fn (x, y) => x ^ y) "" closes
+          val openStr  = Seq.foldr (fn (x, y) => x ^ y) "" (Seq.map (fn x => Tok.toString (x, Tok.Right)) opens)
+          val closeStr = Seq.foldr (fn (x, y) => x ^ y) "" (Seq.map (fn x => Tok.toString (x, Tok.Left)) closes)
         in
           openStr ^ " ... " ^ closeStr
         end
