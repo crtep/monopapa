@@ -26,7 +26,8 @@ end
 
 structure ParenTrans =
   MakeStackTransition
-     (structure Tok = StringTok)
+     (structure Tok = StringTok
+      structure Interior = Nil)
 
 
 fun parseString str =
