@@ -1,5 +1,4 @@
 (* instantiate the functor for parentheses/XML-style tags *)
-
 structure StringTok : TOKEN =
 struct
   type t = string
@@ -9,7 +8,6 @@ end
 structure ParenTrans =
   MakeStackTransition
      (structure Tok = StringTok)
-
 
 
 fun parseString str =
