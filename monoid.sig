@@ -2,7 +2,7 @@ signature PARSERMONOID =
 sig
   type t
   val id   : t
-  val <@@>  : t * t -> t            
+  val @@  : t * t -> t            
 
   val ofChar : char -> t
   val toString : t -> string
@@ -14,7 +14,7 @@ signature MONOID =
 sig
   type t
   val id   : t
-  val <@@>  : t * t -> t            
+  val @@  : t * t -> t            
 end
 
 
@@ -22,7 +22,7 @@ structure Nil : MONOID =
 struct
   type t = unit
   val id = ()
-  val op <@@> = fn (x, y) => ()
+  val op @@ = fn (x, y) => ()
 end
 
 
@@ -32,8 +32,8 @@ struct
   val id = M.id
 
 
-  infix 7 <@@>
-  val op <@@> = M.<@@>
+  infix 7 @@
+  val op @@ = M.@@
 
   fun ofChar _ = id
   fun toString _ = ""

@@ -6,7 +6,7 @@ struct
     let
         val seq = Seq.map M.ofChar (Seq.fromList (String.explode str))
     in
-        Seq.reduce M.<@@> M.id seq
+        Seq.reduce M.@@ M.id seq
     end 
 
   fun main _ = 

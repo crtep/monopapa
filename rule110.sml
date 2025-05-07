@@ -2,7 +2,7 @@ structure MapTransition =
 struct
   type t = MapMonoid.t
   val id = MapMonoid.id
-  val op <@@> = MapMonoid.<@@>
+  val op @@ = MapMonoid.@@
 
   fun ofChar c =
     case c of
@@ -26,7 +26,7 @@ fun parseString str =
   let
     val seq = Seq.map MapTransition.ofChar (Seq.fromList (String.explode str))
   in
-    Seq.reduce MapTransition.<@@> MapTransition.id seq
+    Seq.reduce MapTransition.@@ MapTransition.id seq
   end 
 
 

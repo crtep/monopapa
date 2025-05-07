@@ -61,9 +61,9 @@ struct
            NONE => Error
          | SOME (closeEx, interior, openEx) =>
              Tr (Seq.append (lc, closeEx),
-                    Interior.<@@> (lint, Interior.<@@> (interior, rint)),
+                    Interior.@@ (lint, Interior.@@ (interior, rint)),
                  Seq.append (ro,  openEx)))
 
-  infix 7 <@@>
-  val op <@@> = compose
+  infix 7 @@
+  val op @@ = compose
 end

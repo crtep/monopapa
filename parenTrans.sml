@@ -24,18 +24,19 @@ struct
 end
 
 structure ParenTrans =
-  MakeStackTransition
-     (structure Tok = StringTok
-      structure Interior = NilParser)
+  MakeStackTransition(
+    structure Tok = StringTok
+    structure Interior = NilParser
+  )
 
 
 fun parseString str =
   let
     val seq = Seq.map ParenTrans.ofChar (Seq.fromList (String.explode str))
   in
-    Seq.reduce ParenTrans.<@@> ParenTrans.id seq
+    Seq.reduce ParenTrans.@@ ParenTrans.id seq
   end
 
 
-structure ParserMain = Main(structure M = ParenTrans)
+structure ParserMain = Main(ParenTrans)
 val _ = ParserMain.main ()
