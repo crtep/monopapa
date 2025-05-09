@@ -65,17 +65,28 @@ structure XMLLexingMonoid : TWOLEVELPARSER =
 
 structure XMLParser : PARSERMONOID =
 struct
-  open XMLLexingMonoid
+  structure X = XMLLexingMonoid
+  structure M : PARSERMONOID = struct open XMLLexingMonoid end
+  structure MapP = WeightedMapParser (structure WeightP = M)
+
+  open MapP
+
+  val body = 0
+  val tagStart = 1
+  val nameOpen = 2
+  val nameClose = 3
+  val afterSpace = 4
 
   fun ofChar c =
     case c of
-      #"<" => break
-    | #">" => id
-    | #"/" => L((true, ""))
-    | c    => L((false, Char.toString c))
- 
-  val leftEnd = id
-  val rightEnd = break
+      #"<" => SOME [(body, X.break, tagStart)]
+    | #"/" => SOME [(tagStart, X.L((true, "")), nameClose)]
+    | #">" => SOME [(nameClose, X.id, body), (nameOpen, X.id, body), (afterSpace, X.id, body)]
+    | #" " => SOME [(nameOpen, X.id, afterSpace), (nameClose, X.id, afterSpace), (afterSpace, X.id, afterSpace), (body, X.id, body)]
+    | c    => SOME [(body, X.id, body), (afterSpace, X.id, afterSpace), (tagStart, X.L((false, Char.toString c)), nameOpen), (nameOpen, X.L((false, Char.toString c)), nameOpen), (nameClose, X.L((false, Char.toString c)), nameClose)]
+   
+  val leftEnd = SOME [(~1, X.break, body)]
+  val rightEnd = SOME [(body, X.break, ~1)]
 
 end
 

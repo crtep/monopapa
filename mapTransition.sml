@@ -61,7 +61,41 @@ struct
   val op @@ = combine
 end
 
+(* functor SemigroupOfMonoid (structure M : MONOID) : SEMIGROUP =
+struct
+  open M
+end *)
 
 structure MapMonoid = MonoidOfSemigroup (structure S = MapSemigroup)
 
 functor WeightedMapMonoid (structure WeightS : SEMIGROUP) : MONOID = MonoidOfSemigroup (structure S = WeightedMapSemigroup (structure WeightS = WeightS))
+
+functor WeightedMapParser (structure WeightP : PARSERMONOID) : PARSERMONOID =
+struct
+  structure WeightS : SEMIGROUP =
+  struct
+    open WeightP
+  end
+
+  structure MapM = WeightedMapMonoid (structure WeightS = WeightS)
+  open MapM
+
+  fun ofChar c = raise Fail "ofChar not implemented"
+  val leftEnd = NONE
+  val rightEnd = NONE
+
+  fun getInterior (NONE) = SOME (WeightP.id)
+    | getInterior (SOME ((a, x, b)::_)) = SOME x
+    | getInterior (SOME []) = NONE
+  
+  fun toString x =
+    case getInterior x of
+      NONE => "Lexer error!" 
+    | SOME value => (WeightP.toString value)  
+
+  fun validate x =
+    case getInterior x of
+      NONE => false
+    | SOME value => (WeightP.validate value)
+    
+end
