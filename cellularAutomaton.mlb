@@ -7,5 +7,7 @@ in
     token.sig
     monoid.sig
     mapTransition.sml
-    rule110.sml
+    bitOps.sml
+    main.sml
+    cellularAutomaton.sml
 end
