@@ -1,6 +1,8 @@
 # Monoidal Parallel Parsing
 
-This repository contains several monoidal parsing programs, building up in complexity to a verifier for a subset of XML. To compile them, make sure `mpl` points to a [MaPLe](https://github.com/MPLLang/mpl) compiler and then run one of
+This repository contains several monoidal parsing programs, building up in complexity to a verifier for a subset of XML. A **report** is at [paper/main.pdf](paper/main.pdf).
+
+To compile them, make sure `mpl` points to a [MaPLe](https://github.com/MPLLang/mpl) compiler and then run one of
 ```bash
 mpl cellularAutomaton.mlb
 mpl longestWord.mlb
