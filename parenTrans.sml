@@ -4,7 +4,6 @@ struct
   type t = string
   val eq = op =
 
-  datatype side = Left | Right
 
   fun ofString "(" = SOME ("(", Left)
     | ofString ")" = SOME ("(", Right)
@@ -38,5 +37,6 @@ fun parseString str =
   end
 
 
-structure ParserMain = Main(ParenTrans)
+structure ParserMain = Main(
+  structure M = ParenTrans)
 val _ = ParserMain.main ()

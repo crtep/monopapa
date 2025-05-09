@@ -37,3 +37,42 @@ struct
   infix 7 @@
   val op @@ = combine
 end
+
+functor MonoidOfParser (structure P : PARSERMONOID) : MONOID =
+struct
+  open P
+end
+
+signature TWOLEVELPARSER =
+sig
+  type lt
+  type pt
+  datatype t = L of lt | LPL of lt * pt * lt
+  val id : t
+  val @@ : t * t -> t
+
+  val break : t
+  val parsedPart : t -> pt
+  val ofChar : char -> t
+  val toString : t -> string
+  val validate : t -> bool
+  val leftEnd : t
+  val rightEnd : t
+end
+
+functor TwoLevelParser (structure LexM : MONOID; structure ParseM : PARSERMONOID; val lex : LexM.t -> ParseM.t) : TWOLEVELPARSER =
+struct
+  structure M = TwoLevelMonoid (
+    structure LexM = LexM
+    structure ParseM = MonoidOfParser(structure P = ParseM)
+    val lex = lex)
+  open M
+
+  fun ofChar c = raise Fail "ofChar not implemented"
+  fun toString x = ParseM.toString (parsedPart x)
+  fun validate x = ParseM.validate (parsedPart x)
+
+  val leftEnd = break
+  val rightEnd = break
+end
+

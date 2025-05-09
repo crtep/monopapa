@@ -1,0 +1,15 @@
+ann
+    "allowOptBar true"
+    "allowExtendedTextConsts true"
+in
+    lib/github.com/mpllang/mpllib/sources.mpl.mlb
+    lib-local/sources.mpl.mlb
+    token.sig
+    monoid.sig
+    stackTransition.fun
+    mapTransition.sml
+    main.sml
+    twoLevel.sml
+    longestWord.sml
+    xml.sml
+end
