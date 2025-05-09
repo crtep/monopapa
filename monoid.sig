@@ -7,6 +7,9 @@ sig
   val ofChar : char -> t
   val toString : t -> string
   val validate : t -> bool
+
+  val leftEnd : t
+  val rightEnd : t
 end
 
 
@@ -38,6 +41,9 @@ struct
   fun ofChar _ = id
   fun toString _ = ""
   fun validate _ = true
+
+  val leftEnd = id
+  val rightEnd = id
 end
 
 structure NilParser = ParserOfMonoid (structure M : MONOID = Nil)

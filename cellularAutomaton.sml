@@ -1,4 +1,4 @@
-structure CellularAutomatonTransition =
+structure CellularAutomatonTransition : PARSERMONOID =
 struct
   type t = MapMonoid.t
   val id = MapMonoid.id
@@ -16,11 +16,12 @@ struct
 
   fun ofChar c =
     case c of
-      #"(" => SOME [(~1, 0), (~1, 1), (~1, 2), (~1, 3)]
-    | #")" => SOME [(0, ~1), (1, ~1), (2, ~1), (3, ~1)]
     | #"0" => SOME (edgesOfOutBit 0)
     | #"1" => SOME (edgesOfOutBit 1)
     | _    => NONE (* ignore other characters *)
+
+  val leftEnd = SOME [(~1, 0), (~1, 1), (~1, 2), (~1, 3)]
+  val rightEnd = SOME [(0, ~1), (1, ~1), (2, ~1), (3, ~1)]
 
   fun toString (NONE) = "id"
   | toString (SOME lst) = String.concat (List.map (fn (x, y) => Int.toString x ^ " -> " ^ Int.toString y ^ "\n") lst)
