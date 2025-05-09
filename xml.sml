@@ -5,12 +5,16 @@ struct
   val op @@ = fn (x, y) => x ^ y
 end
 
-structure OrM : MONOID =
+datatype XMLTagGender = Opening | Closing | SelfClosing
+
+structure RightHandedS : SEMIGROUP =
 struct
-  type t = bool
-  val id = false
-  val op @@ = fn (x, y) => x orelse y
+  type t = XMLTagGender
+  val op @@ = fn (x, y) => y
 end
+
+structure RightHandedM : MONOID = MonoidOfSemigroup
+  (structure S = RightHandedS)
 
 functor ProductMonoid (
     structure M1 : MONOID
@@ -23,7 +27,7 @@ end
 
 
 structure TagKindM = ProductMonoid
-  (structure M1 = OrM
+  (structure M1 = RightHandedM
    structure M2 = ConcatM)
 
 
@@ -55,12 +59,16 @@ structure XMLLexingMonoid : TWOLEVELPARSER =
     structure LexM = TagKindM
     structure ParseM = XMLTagMonoid
 
-    val lex = fn (close, text) =>
-      if text = "" then
-        ParseM.ofTok NONE
-      else
-        ParseM.ofTok (SOME (text, if close then Right else Left))
-  end)
+    val lex = fn (gender, text) => ParseM.ofTok (
+      case text of 
+        "" => NONE
+      | _  => 
+        case gender of
+          NONE => NONE
+        | SOME Opening => SOME (text, Left)
+        | SOME Closing => SOME (text, Right)
+        | SOME SelfClosing => NONE
+    ) end)
 
 
 structure XMLParser : PARSERMONOID =
@@ -76,14 +84,37 @@ struct
   val nameOpen = 2
   val nameClose = 3
   val afterSpace = 4
+  val afterFinalSlash = 5
+  val quoted = 6
 
   fun ofChar c =
     case c of
-      #"<" => SOME [(body, X.break, tagStart)]
-    | #"/" => SOME [(tagStart, X.L((true, "")), nameClose)]
-    | #">" => SOME [(nameClose, X.id, body), (nameOpen, X.id, body), (afterSpace, X.id, body)]
-    | #" " => SOME [(nameOpen, X.id, afterSpace), (nameClose, X.id, afterSpace), (afterSpace, X.id, afterSpace), (body, X.id, body)]
-    | c    => SOME [(body, X.id, body), (afterSpace, X.id, afterSpace), (tagStart, X.L((false, Char.toString c)), nameOpen), (nameOpen, X.L((false, Char.toString c)), nameOpen), (nameClose, X.L((false, Char.toString c)), nameClose)]
+      #"<" => SOME [(body, X.break, tagStart), 
+                    (quoted, X.id, quoted)]
+    | #"/" => SOME [(tagStart, X.L((SOME Closing, "")), nameClose),
+                    (quoted, X.id, quoted), 
+                    (nameOpen, X.L((SOME SelfClosing, "")), afterFinalSlash), 
+                    (nameClose, X.L((SOME SelfClosing, "")), afterFinalSlash), 
+                    (afterSpace, X.L((SOME SelfClosing, "")), afterFinalSlash)]
+    | #">" => SOME [(nameClose, X.id, body), 
+                    (quoted, X.id, quoted),
+                    (nameOpen, X.id, body), 
+                    (afterSpace, X.id, body),
+                    (afterFinalSlash, X.id, body)]
+    | #" " => SOME [(nameOpen, X.id, afterSpace),
+                    (quoted, X.id, quoted),
+                    (nameClose, X.id, afterSpace), 
+                    (afterSpace, X.id, afterSpace), 
+                    (body, X.id, body)]
+    | #"\"" => SOME [(body, X.id, body),
+                    (afterSpace, X.id, quoted),
+                    (quoted, X.id, afterSpace)]
+    | c    => SOME [(body, X.id, body),
+                    (quoted, X.id, quoted),
+                    (afterSpace, X.id, afterSpace), 
+                    (tagStart, X.L((SOME Opening, Char.toString c)), nameOpen), 
+                    (nameOpen, X.L((NONE, Char.toString c)), nameOpen), 
+                    (nameClose, X.L((NONE, Char.toString c)), nameClose)]
    
   val leftEnd = SOME [(~1, X.break, body)]
   val rightEnd = SOME [(body, X.break, ~1)]

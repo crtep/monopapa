@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.0.1 (3529601 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="40.7257300" minlon="-74.0076610" maxlat="40.7349010" maxlon="-73.9915250"/>
+ <node id="42421877" visible="true" version="10" changeset="156671106" timestamp="2024-09-16T04:51:29Z" user="snake21" uid="2591427" lat="40.7328696" lon="-73.9959296"/>
+ <node id="42421882" visible="true" version="12" changeset="156671106" timestamp="2024-09-16T04:51:29Z" user="snake21" uid="2591427" lat="40.7341556" lon="-73.9990116">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="crossing"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42421889" visible="true" version="6" changeset="66863191" timestamp="2019-02-02T19:34:55Z" user="promiseofbirth" uid="6457180" lat="40.7341463" lon="-73.9991816">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
+ <node id="42421901" visible="true" version="4" changeset="156671922" timestamp="2024-09-16T05:37:29Z" user="snake21" uid="2591427" lat="40.7347911" lon="-73.9992532"/>
+ <node id="42421905" visible="true" version="3" changeset="20999552" timestamp="2014-03-09T05:34:10Z" user="lxbarth" uid="589596" lat="40.7351891" lon="-73.9993707"/>
+ <node id="42421923" visible="true" version="4" changeset="61552483" timestamp="2018-08-10T21:22:57Z" user="ALE!" uid="40023" lat="40.7260106" lon="-73.9938731"/>
+ <node id="42421927" visible="true" version="3" changeset="156847084" timestamp="2024-09-20T03:22:02Z" user="snake21" uid="2591427" lat="40.7262619" lon="-73.9943951"/>
+ <node id="42421932" visible="true" version="3" changeset="61552483" timestamp="2018-08-10T21:22:57Z" user="ALE!" uid="40023" lat="40.7265799" lon="-73.9950298"/>
+ <node id="42427898" visible="true" version="2" changeset="2221591" timestamp="2009-08-21T10:56:54Z" user="woodpeck_fixbot" uid="147510" lat="40.7323690" lon="-74.0058160"/>
+ <node id="42428444" visible="true" version="6" changeset="3424090" timestamp="2009-12-21T23:53:21Z" user="NE2" uid="207745" lat="40.7242350" lon="-73.9977850">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
+ <node id="42428447" visible="true" version="11" changeset="90948322" timestamp="2020-09-15T21:51:28Z" user="Innoventions" uid="10112864" lat="40.7255012" lon="-73.9967146">
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+ </node>
+ <node id="42428454" visible="true" version="9" changeset="140469109" timestamp="2023-08-27T21:39:31Z" user="hdevine825" uid="2456367" lat="40.7272120" lon="-73.9952700">
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+ </node>
+ <node id="42428458" visible="true" version="16" changeset="140469109" timestamp="2023-08-27T21:39:31Z" user="hdevine825" uid="2456367" lat="40.7278276" lon="-73.9947496">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428460" visible="true" version="14" changeset="142642086" timestamp="2023-10-16T03:00:30Z" user="hdevine825" uid="2456367" lat="40.7284130" lon="-73.9942520">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
+ <node id="42428464" visible="true" version="13" changeset="140469109" timestamp="2023-08-27T21:39:31Z" user="hdevine825" uid="2456367" lat="40.7290090" lon="-73.9937470">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428468" visible="true" version="13" changeset="140469109" timestamp="2023-08-27T21:39:31Z" user="hdevine825" uid="2456367" lat="40.7295810" lon="-73.9932620">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428471" visible="true" version="9" changeset="140469109" timestamp="2023-08-27T21:39:31Z" user="hdevine825" uid="2456367" lat="40.7300800" lon="-73.9928410">
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+ </node>
+ <node id="42428473" visible="true" version="14" changeset="156671106" timestamp="2024-09-16T04:51:29Z" user="snake21" uid="2591427" lat="40.7306005" lon="-73.9924142">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428476" visible="true" version="13" changeset="156671106" timestamp="2024-09-16T04:51:29Z" user="snake21" uid="2591427" lat="40.7311834" lon="-73.9919247">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428480" visible="true" version="14" changeset="156671491" timestamp="2024-09-16T05:14:52Z" user="snake21" uid="2591427" lat="40.7317437" lon="-73.9914641"/>
+ <node id="42428483" visible="true" version="12" changeset="103294222" timestamp="2021-04-20T21:07:39Z" user="barklund" uid="1428730" lat="40.7324490" lon="-73.9912890">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428489" visible="true" version="12" changeset="103294222" timestamp="2021-04-20T20:33:19Z" user="barklund" uid="1428730" lat="40.7332140" lon="-73.9911140">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42428491" visible="true" version="14" changeset="101873279" timestamp="2021-03-28T13:20:30Z" user="promiseofbirth" uid="6457180" lat="40.7339814" lon="-73.9909530">
+  <tag k="button_operated" v="no"/>
+  <tag k="crossing" v="traffic_signals"/>
+  <tag k="highway" v="traffic_signals"/>
+  <tag k="kerb" v="lowered"/>
+  <tag k="tactile_paving" v="yes"/>
+  <tag k="traffic_signals:sound" v="no"/>
+  <tag k="traffic_signals:vibration" v="no"/>
+ </node>
+ <node id="42429373" visible="true" version="6" changeset="6029482" timestamp="2010-10-13T14:05:26Z" user="samg" uid="358210" lat="40.7353130" lon="-73.9941180">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
+ <node id="42429672" visible="true" version="5" changeset="156847084" timestamp="2024-09-20T03:22:02Z" user="snake21" uid="2591427" lat="40.7269435" lon="-73.9947269"/>
+ <node id="42429676" visible="true" version="4" changeset="156847084" timestamp="2024-09-20T03:22:02Z" user="snake21" uid="2591427" lat="40.7275705" lon="-73.9941899"/>
+ <node id="42429700" visible="true" version="4" changeset="43523248" timestamp="2016-11-10T01:22:22Z" user="TheBestIdea" uid="298513" lat="40.7317982" lon="-74.0011515">
+  <tag k="highway" v="stop"/>
+  <tag k="stop" v="all"/>
+  <tag k="traffic_sign" v="stop"/>
+ </node>
+ <node id="42429701" visible="true" version="5" changeset="57791701" timestamp="2018-04-04T05:59:39Z" user="rusefkuma" uid="7637564" lat="40.7311376" lon="-74.0029381"/>
+ <node id="42430038" visible="true" version="4" changeset="52690849" timestamp="2017-10-06T18:52:12Z" user="ALE!" uid="40023" lat="40.7211736" lon="-73.9965747">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
+ <node id="42430154" visible="true" version="4" changeset="3381980" timestamp="2009-12-15T19:29:50Z" user="NE2" uid="207745" lat="40.7255130" lon="-74.0040310">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
